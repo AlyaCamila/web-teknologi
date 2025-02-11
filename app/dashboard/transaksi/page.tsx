@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 interface Transaksi {
   id: number;
   customer_name: string;
-  item_id: string;
-  quantity: number;
-  total_price: number;
+  label: string;
+  lama_sewa: number;
+  total_harga: number;
   created_at: string;
 }
 
@@ -24,7 +24,7 @@ export default function TransaksiPage() {
         if (!response.ok) {
           throw new Error("Gagal mengambil data transaksi");
         }
-        const data: Transaksi[] = await response.json();
+        const data = await response.json();
         setTransaksi(data);
       } catch (error) {
         console.error(error);
@@ -56,8 +56,8 @@ export default function TransaksiPage() {
               <tr className="bg-gray-200">
                 <th className="border border-gray-300 px-4 py-2">No</th>
                 <th className="border border-gray-300 px-4 py-2 whitespace-nowrap">Nama Pelanggan</th>
-                <th className="border border-gray-300 px-4 py-2">Item</th>
-                <th className="border border-gray-300 px-4 py-2">Jumlah</th>
+                <th className="border border-gray-300 px-4 py-2">Kapasitas</th>
+                <th className="border border-gray-300 px-4 py-2">Lama Sewa</th>
                 <th className="border border-gray-300 px-4 py-2 whitespace-nowrap">Total Harga</th>
                 <th className="border border-gray-300 px-4 py-2">Tanggal</th>
               </tr>
@@ -67,9 +67,9 @@ export default function TransaksiPage() {
                 <tr key={item.id} className="text-center">
                   <td className="border border-gray-300 px-4 py-2">{index + 1}</td>
                   <td className="border border-gray-300 px-4 py-2">{item.customer_name}</td>
-                  <td className="border border-gray-300 px-4 py-2">{item.item_id}</td>
-                  <td className="border border-gray-300 px-4 py-2">{item.quantity}</td>
-                  <td className="border border-gray-300 px-4 py-2">Rp {item.total_price.toLocaleString()}</td>
+                  <td className="border border-gray-300 px-4 py-2">{item.label}</td>
+                  <td className="border border-gray-300 px-4 py-2">{item.lama_sewa} hari</td>
+                  <td className="border border-gray-300 px-4 py-2">Rp {item.total_harga.toLocaleString()}</td>
                   <td className="border border-gray-300 px-4 py-2">{new Date(item.created_at).toLocaleDateString()}</td>
                 </tr>
               ))}

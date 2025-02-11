@@ -9,11 +9,11 @@ export default function SideNav() {
       <Link
         className="mb-2 flex h-16 md:h-40 items-center justify-center rounded-md p-4"
         href="/"
-        style={{ backgroundColor: "rgb(10,97,96)" }} // Warna background
+        style={{ backgroundColor: "rgb(151, 214, 255)" }} // Warna background
       >
         <div className="flex justify-center items-center">
           <img
-            src="/logo/logo.png"
+            src="/logo/uia-logo.png"
             className="max-w-[60px] md:max-w-[120px] h-[40px] md:h-auto object-contain" // Ukuran lebih kecil di mobile
             alt="Banner UIA"
           />
